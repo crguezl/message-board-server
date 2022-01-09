@@ -24,7 +24,7 @@ app.get('/messages', (req, res) => {
 });
 
 app.post('/messages', (req, res) => {
-  console.log(req.body);
+  console.log(`req.body = ${JSON.stringify(req.body)}`);
   messages.create(req.body).then((message) => {
     res.json(message);
   }).catch((error) => {

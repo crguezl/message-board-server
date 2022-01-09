@@ -25,9 +25,12 @@ function getAll() {
 }
 
 function create(message) {
+  console.log(`Inside create(${JSON.stringify(message)})`);
+
   if (!message.username) message.username = 'Anonymous';
 
   const result = Joi.validate(message, schema);
+  console.log(`Inside create(${JSON.stringify(message)}) validation ${JSON.stringify(result)}`);
   if (result.error == null) {
     message.created = new Date();
     return messages.insert(message);
